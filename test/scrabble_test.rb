@@ -73,4 +73,17 @@ class ScrabbleTest < Minitest::Test
 
     assert_equal 10, scrabble.length_bonus("Justins")
   end
+
+  def test_it_returns_highest_scoring_word
+    scrabble = Scrabble.new
+
+    assert_equal "home", scrabble.highest_scoring_word(['home', 'word', 'hello', 'sound'])
+  end
+
+  def test_it_returns_shorter_word_if_tied
+    skip
+    scrabble = Scrabble.new
+
+    assert_equal "word", scrabble.highest_scoring_word(['hello', 'word', 'sound'])
+  end
 end

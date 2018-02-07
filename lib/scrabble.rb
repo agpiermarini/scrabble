@@ -10,12 +10,6 @@ class Scrabble
     end.sum
   end
 
-  def score_with_multipliers(word, bonus = nil, multiplier = 1)
-    return nil if word == nil || word == ""
-    total_score = bonus_multiplier(word, bonus, multiplier)
-    total_score += length_bonus(word)
-  end
-
   def bonus_multiplier(word, bonus = nil, multiplier = 1)
     return nil if word == nil || word == ""
     word.split("").map.with_index do |letter, index|
@@ -26,6 +20,21 @@ class Scrabble
   def length_bonus(word)
     return 10 if word.split("").length >= 7
     return 0
+  end
+
+  def score_with_multipliers(word, bonus = nil, multiplier = 1)
+    return nil if word == nil || word == ""
+    total_score = bonus_multiplier(word, bonus, multiplier)
+    total_score += length_bonus(word)
+  end
+
+  def highest_scoring_word(words)
+    return nil if words == nil || words == ""
+    highest = words[0]
+    words.each do |word|
+      highest = word if score(word) > score(highest)
+    end
+    return highest
   end
 
   def point_values
