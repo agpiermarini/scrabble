@@ -32,9 +32,14 @@ class Scrabble
     return nil if words == nil || words == ""
     highest = words[0]
     words.each do |word|
-      highest = word if score(word) > score(highest)
+      highest = shorter?(highest, word) if score(word) > score(highest)
     end
     return highest
+  end
+
+  def shorter?(word1, word2)
+    return word2 if word2.split("").length < word1.split("").length
+    return word1
   end
 
   def point_values

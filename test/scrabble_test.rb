@@ -81,7 +81,7 @@ class ScrabbleTest < Minitest::Test
   end
 
   def test_it_returns_shorter_word_if_tied
-    skip
+    #skip
     scrabble = Scrabble.new
 
     assert_equal "word", scrabble.highest_scoring_word(['hello', 'word', 'sound'])
